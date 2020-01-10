@@ -26,7 +26,10 @@ function registerUser(req, res, next) {
         profileImage: req.body.profileImage
     }).then((user) => {
         let token = jwt.sign({ _id: user._id }, process.env.SECRET);
-        res.json({ status: "Signup success!", token: token });
+        res.json({ 
+            status: "Signup success!",
+            token: token 
+        });
     }).catch(next);
 };
 
@@ -48,7 +51,10 @@ function userLogin(req, res, next) {
                             return next(err);
                         }
                         let token = jwt.sign({ _id: user._id }, process.env.SECRET);
-                        res.json({ status: 'Login success!', token: token });
+                        res.json({ 
+                            status: 'Login success!', 
+                            token: token 
+                        });
                     })
                     .catch(next);
             }
